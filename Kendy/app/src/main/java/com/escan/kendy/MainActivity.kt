@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val count : Int = (gridLayout.getChildCount() -1)
+        for(index in 0..count){
+            imageArray.add(gridLayout.getChildAt(index) as ImageView)
+        }
+        hideImages()
 
         countDownTimer = object : CountDownTimer(15000,1000) {
             override fun onFinish() {
@@ -54,6 +59,15 @@ class MainActivity : AppCompatActivity() {
         }.start()
     }
 
+     fun hideImages(){
+        for (image in imageArray){
+            image.visibility = View.INVISIBLE
+        }
+        val random = Random()
+        val randomIndex = random.nextInt(15)
+        imageArray[randomIndex].visibility = View.VISIBLE
+    }
+    
     fun increaseScore(view: View){
         score = score + 1
         textView2.text = "$score"
