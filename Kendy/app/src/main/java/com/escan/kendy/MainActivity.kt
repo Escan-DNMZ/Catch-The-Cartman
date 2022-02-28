@@ -31,11 +31,17 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root //Layout ile çalışacağımız belirtiyor
         setContentView(view)
 
+<<<<<<< HEAD
         //gridLayout içinde olan itemlerin sayısını alıyor.
         val count : Int = (binding.gridLayout.getChildCount() -1)
         // 0'dan başla count a kadar
         for(index in 0..count){
             imageArray.add(binding.gridLayout.getChildAt(index) as ImageView)
+=======
+        val count : Int = (gridLayout.getChildCount() -1)
+        for(index in 0..count){
+            imageArray.add(gridLayout.getChildAt(index) as ImageView)
+>>>>>>> 01f8e90ea8e90152af3af45e81e14edd528fbd08
         }
         hideImages()
 
@@ -72,11 +78,21 @@ class MainActivity : AppCompatActivity() {
         }.start()
     }
 
+     fun hideImages(){
+        for (image in imageArray){
+            image.visibility = View.INVISIBLE
+        }
+        val random = Random()
+        val randomIndex = random.nextInt(15)
+        imageArray[randomIndex].visibility = View.VISIBLE
+    }
+    
     fun increaseScore(view: View){
         score = score + 1
         binding.textView2.text = "Score: $score"
 
     }
+<<<<<<< HEAD
 
     fun hideImages(){
         runnable = object : Runnable {
@@ -94,3 +110,6 @@ class MainActivity : AppCompatActivity() {
             handler.post(runnable)
     }
 }
+=======
+}
+>>>>>>> 01f8e90ea8e90152af3af45e81e14edd528fbd08
